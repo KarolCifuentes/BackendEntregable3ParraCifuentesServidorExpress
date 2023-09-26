@@ -1,0 +1,23 @@
+{
+  "name": "product-manageres6",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "npx babel --plugins @babel/plugin-transform-property-mutators src/Index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.22.15",
+    "@babel/core": "^7.22.17",
+    "@babel/preset-env": "^7.22.15",
+    "install": "^0.13.0",
+    "npm": "^10.0.0"
+  },
+  "dependencies": {
+    "@babel/plugin-transform-property-mutators": "^7.22.15"
+  }
+}
