@@ -14,7 +14,7 @@ persona()*/
 
 import {promises as fs} from "fs"
 
- class ProductManager {
+ export default class ProductManager {
     constructor() {
         this.patch = "./product.txt"
         this.products = []
@@ -40,58 +40,56 @@ import {promises as fs} from "fs"
     }
 
 
-    /*readProduct = async () => {
-        let respuesta = await fs.readFile(this.patch, "utf-8")
-        return JSON.parse(respuesta)
-    }*/
+    readProduct = async () => {
+
+        let productTxt = await fs.readFile(this.patch, "utf-8")
+        return JSON.parse(productTxt)
+    }
 
 
-    /* getProduct = async () => {
-        let respuesta = await fs.readFile(this.patch, "utf-8")
-        //console.log(respuesta)
-        console.log(JSON.parse(respuesta))
+    getProduct = async () => {
 
-        /*let respuesta2 = await this.readProduct()*/
-        //return console.log(respuesta2) //return await console.log(respuesta2)
-     //}
+        let resProductTxt = await this.readProduct()
+        return console.log(resProductTxt)
+    }
 
 
-     /*getProductById = async (id) => {
-        let respuesta3 = await this.readProduct()
-        let filter = respuesta3.find(product => product.id === id)
-        console.log(filter)
-        /*if(!respuesta3.find(product => product.id === id)){
+     getProductById = async (id) => {
+        let resProduct = await this.readProduct()
+        //let filter = resProduct.find(product => product.id === id)
+        //console.log(filter)
+        if(!resProduct.find(product => product.id === id)){
             console.log("El producto no se encuentra")
         }else{
-            console.log(respuesta3.find(product => product.id === id))
-        }*
-     }*/
+            console.log(resProduct.find(product => product.id === id))
+        }
+     }
 
 
-     /*deleteProductById = async (id) => {
-        let respuesta3 = await this.readProduct()
-        let productFilter = respuesta3.filter(product => product.id != id)
+     deleteProductById = async (id) => {
+        let delProduct = await this.readProduct()
+        let productFilter = delProduct.filter(product => product.id != id)
 
         await fs.writeFile(this.patch, JSON.stringify(productFilter))
         console.log("El producto "+id+" se elimino")
-     }*/
+     }
 
 
-     /*updateProduct = async ({id, ...product}) => {
+     updateProduct = async ({id, ...product}) => {
         await this.deleteProductById(id)
 
         let productOld = await this.readProduct()
         //console.log(productOld)
 
-        let productModified = [{id, ...product}, ...productOld];
+        let productModified = [{ ...product, id}, ...productOld];
         //console.log(productModified)
         await fs.writeFile(this.patch, JSON.stringify(productModified))
-     }*/
+     }
  }
 
- const product = new ProductManager
+//const product = new ProductManager()
 
- product.addProduct("title1", "description1", 500, "thumbnail1", "0001", 2)
+/*product.addProduct("title1", "description1", 500, "thumbnail1", "0001", 2)
  product.addProduct("title2", "description2", 1.000, "thumbnail2", "0002", 1)
  product.addProduct("title3", "description3", 200, "thumbnail3", "0003", 7)
  product.addProduct("title4", "description4", 900, "thumbnail4", "0004", 18)
@@ -100,15 +98,15 @@ import {promises as fs} from "fs"
  product.addProduct("title7", "description7", 1, "thumbnail7", "0007", 7)
  product.addProduct("title8", "description8", 77, "thumbnail8", "0008", 9)
  product.addProduct("title9", "description9", 66, "thumbnail9", "0009", 16)
- product.addProduct("title10", "description10", 98, "thumbnail10", "00010", 34)
+ product.addProduct("title10", "description10", 98, "thumbnail10", "00010", 34)*/
 
 //product.getProduct()
 
-//product.getProductById(1)
+//product.getProductById(4)
 
- //product.deleteProductById(2)
+//product.deleteProductById(2)
 
- /*product.updateProduct({
+/*product.updateProduct({
      title: 'title1',
      description: 'description1',
      price: 800,
@@ -116,4 +114,4 @@ import {promises as fs} from "fs"
      code: '0001',
      stock: 44,
      id: 1
- })*/
+})*/
