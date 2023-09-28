@@ -16,7 +16,7 @@ import {promises as fs} from "fs"
 
  export default class ProductManager {
     constructor() {
-        this.patch = "./product.txt"
+        this.patch = "./src/product.txt"
         this.products = []
     }
 
